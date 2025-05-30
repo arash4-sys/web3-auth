@@ -6,10 +6,10 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useAuth } from "@/contexts/AuthContext";
 import { useToast } from "@/hooks/use-toast";
-import { agent } from "../lib/Auth";
 
 const Login = () => {
   const [privateKey, setPrivateKey] = useState("");
+  const [email, setEmail] = useState("");
 
   const { loginByVC, loginByPrivKey, isLoading } = useAuth();
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ const Login = () => {
     e.preventDefault();
 
     if (privateKey) {
-      console.log('priv key branch');
+      
       try {
         await loginByPrivKey(privateKey);
         navigate('/dashboard');
@@ -30,7 +30,7 @@ const Login = () => {
         })
       }
     } else {
-      console.log('vc branch');
+      
       try {
         await loginByVC();
         toast({
@@ -58,6 +58,17 @@ const Login = () => {
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
+        <div>
+            <Label htmlFor="email">Email</Label>
+            <Input
+              id="email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter your email"
+              className="mt-1"
+            />
+          </div>
           <div>
             <Label htmlFor="privateKey">* Private Key(in hex format)</Label>
             <Input
@@ -69,7 +80,7 @@ const Login = () => {
               className="mt-1"
             />
           </div>
-
+          
           <Button
             type="submit"
             className="w-full"

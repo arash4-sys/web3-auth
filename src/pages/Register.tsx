@@ -6,8 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useAuth } from "@/contexts/AuthContext";
 import { useToast } from "@/hooks/use-toast";
-import { agent } from "../lib/Auth"; 
-import { IIdentifier } from "@veramo/core";
+
 
 const Register = () => {
   const [email, setEmail] = useState("");

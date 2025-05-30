@@ -1,7 +1,7 @@
 
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "@/contexts/AuthContext";
+
 
 const Index = () => {
   const navigate = useNavigate();
@@ -28,6 +28,14 @@ const Index = () => {
                 size="lg"
               >
                 Create Account
+              </Button>
+              <Button 
+                onClick={() => navigate('/verify')} 
+                variant="outline"
+                className="w-full"
+                size="lg"
+              >
+                Verify Credentials
               </Button>
             </>
           

@@ -49,7 +49,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     }
   };
 
-  const loginByPrivKey = async (privateKeyHex: string) => {
+  const loginByPrivKey = async (privateKeyHex: string, email: string) => {
     setIsLoading(true);
     try {
       const key = await agent.keyManagerImport({
@@ -72,7 +72,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
           issuanceDate: new Date().toISOString(),
           credentialSubject: {
             id: identifier.did,
-            email: "",
+            email: email,
           },
         },
         proofFormat: 'jwt',
@@ -103,7 +103,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
           issuanceDate: new Date().toISOString(),
           credentialSubject: {
             id: subject.did,
-            username: email,
+            email: email,
           },
           },
           proofFormat: 'jwt',

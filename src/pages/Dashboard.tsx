@@ -24,6 +24,10 @@ const Dashboard = () => {
     return null;
   }
 
+  //JSON.parse(vc)['credentialSubject']['email'] 
+  const email = JSON.parse(window.localStorage.getItem('VC'))['credentialSubject']['email'];
+  const vc = window.localStorage.getItem('VC');
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -51,14 +55,30 @@ const Dashboard = () => {
                 <User className="h-6 w-6 text-blue-600" />
               </div>
               <div>
-                <h2 className="text-2xl font-bold text-gray-900">Welcome back!</h2>
+                <h2 className="text-2xl font-bold text-gray-900">Welcome back, {email}!</h2>
                 <p className="text-gray-600">{userDID}</p>
               </div>
             </div>
           </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+            <div className="bg-white rounded-lg shadow p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-2xl font-bold text-gray-900">Your vc</p>
+                  <p className="text-sm font-medium text-gray-600" style={{
+                    flex: 1,
+                    backgroundColor: "lightGrey",
+                    wordBreak: "break-word"
+                    }}>{vc}</p>
+                
+                </div>
+              </div>
+            </div>
+            </div>   
         </div>
       </main>
     </div>
+    
   );
 };
 
